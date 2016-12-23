@@ -30,6 +30,24 @@
      ]
  };
 
+// Album for assignment
+ var albumBadoobee = {
+     title: 'The Bleah',
+     artist: 'Robert Pirritano',
+     label: 'Yikes',
+     year: '2016',
+     albumArtUrl: 'assets/images/album_covers/20.png',
+     songs: [
+         { title: 'Where does the time go?', duration: '1:45' },
+         { title: 'Making it through', duration: '3:01' },
+         { title: 'Insight', duration: '4:21'},
+         { title: 'Travels', duration: '2:16' },
+         { title: 'Multiple selves', duration: '2:18'}
+     ]
+ };
+
+
+
  var createSongRow = function(songNumber, songName, songLength) {
      var template =
         '<tr class="album-view-song-item">'
@@ -42,13 +60,14 @@
      return template;
  };
 
- var setCurrentAlbum = function(album) {
-     // #1
      var albumTitle = document.getElementsByClassName('album-view-title')[0];
      var albumArtist = document.getElementsByClassName('album-view-artist')[0];
      var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
      var albumImage = document.getElementsByClassName('album-cover-art')[0];
      var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
+
+ var setCurrentAlbum = function(album) {
+     
  
      // #2
      albumTitle.firstChild.nodeValue = album.title;
@@ -67,5 +86,20 @@
  
  window.onload = function() {
      setCurrentAlbum(albumPicasso);
+     
+     var albums = [albumPicasso, albumMarconi, albumBadoobee];
+     var index = 1;
+     albumImage.addEventListener("click", function(event){
+         setCurrentAlbum(albums[index]);
+         index++;
+         if (index == albums.length) {
+             index = 0;
+         }
+     });
  };
 
+var albumCover = document.getElementsByClassName("album-view-song-list").addEventListener("click", changeAlbum);
+
+function changeAlbum() {
+    document.getElementsByClassName("album-view-song-list")
+}
