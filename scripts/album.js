@@ -354,3 +354,4 @@ var toggleFromPlayerBar = function() {
         currentSoundFile.pause();
     }
 }
+ 
